@@ -7,9 +7,11 @@ pipeline {
                 script{
                     sh("""#!/bin/bash
                            set -x
-                           chmod +x -R "{env.WORKSPACE}"
+                           chmod +x -R "${env.WORKSPACE}"
                            env=\"${env.WORKSPACE}"
                            echo \${env}
+                           wrkspc= \$(echo \${env} | tr '/' '\n'| tail -1)
+                           cp -R wrkspc/Data_Analysis_Script/ .
                        
                        """)
                 }
@@ -25,7 +27,7 @@ pipeline {
     }
     post{
         always{
-            cleanWs()
+        //    cleanWs()
         }
     }
 }
