@@ -2,10 +2,25 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('BUILD') {
             steps {
-                echo 'Hello World'
+                script{
+                    sh("""#!/bin/bash
+                           set -x
+                           chmod +x -R "{env.WORKSPACE}"
+                           env=\"${env.WORKSPACE}"
+                           echo \${env}
+                       
+                       """)
+                }
             }
         }
+
+        stage('DEPLOY') {
+            steps {
+                
+            }
+        
+        
     }
 }
