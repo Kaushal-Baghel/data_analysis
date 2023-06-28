@@ -11,7 +11,8 @@ pipeline {
                            env=\"${env.WORKSPACE}"
                            echo \${env}
                            wrkspc= \$(echo \${env} | tr '/' '\n'| tail -1)
-                           cp -R \$(echo \${wrkspc}"/Data_Analysis_Script/") .
+                           script_path=\$(echo \${wrkspc}"/Data_Analysis_Script/")
+                           echo \${script_path}
                        
                        """)
                 }
