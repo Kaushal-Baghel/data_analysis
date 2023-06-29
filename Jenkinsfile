@@ -12,7 +12,6 @@ pipeline {
                            echo \${env}
                            cd ..
                            ls -l
-                           
                            cp -R ./Data_Analysis_Script/ \${env}
                            #wrkspc= \$(echo \${env}| rev| cut -d'/' -f2-| rev)
                            #script_path=\$(echo \$(echo \${wrkspc})"/Data_Analysis_Script/")
