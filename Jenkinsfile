@@ -15,7 +15,9 @@ pipeline {
                            cp -R ./Data_Analysis_Script/ \${env}
                            cd Data_Analysis_Script/
                            docker image build . -t data_analysis_app
-                           docker run -it --name Testcontainer --volume $PWD/Data_Analysis_Script/:/usr/app/src data_analysis_app
+                           sudo docker run -d -it --name Testcontainer --volume $PWD/Data_Analysis_Script:/usr/app/src --entrypoint /bin/bash data_analysis_app
+                           sudo docker exec -it Testcontainer ls
+                           sudo docker exec -it Testcontainer python ./gen_report.py
                            docker ps
                        
                        """)
