@@ -23,8 +23,7 @@ pipeline {
                            docker rm Testcontainer
                            docker rmi data_analysis_app
                            cp -f /var/lib/jenkins/workspace/Data_Analysis_Script/index.html \${env}
-                           git commit -m "${BUILD_NUMBER}"
-                           git push
+                           
                        """)
                 }
             }
@@ -32,14 +31,21 @@ pipeline {
 
         stage('DEPLOY') {
             steps {
-                echo "DEPLOY"    
+                script {
+                    echo "DEPLOY"
+                    sh("""#!/bin/bash
+                       echo "${env.WORKSPACE}"
+                       git commit -m "Report Generated Successfully"
+                       git push
+                       """)    
+                }    
             }
         
         }
     }
     post{
         always{
-            //cleanWs()
+            cleanWs()
             echo "Exit"
         }
     }
