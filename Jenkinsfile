@@ -13,10 +13,10 @@ pipeline {
                            cd ..
                            ls -l
                            cp -R ./Data_Analysis_Script/ \${env}
-                           cd /Data_Analysis_Script/
-                           sudo docker image build . -t data_analysis_app
-                           sudo docker run -d -it --name Testcontainer --volume $PWD:/usr/app/src data_analysis_app
-                           sudo docker ps
+                           cd Data_Analysis_Script/
+                           docker image build . -t data_analysis_app
+                           docker run -d -it --name Testcontainer --volume $PWD:/usr/app/src data_analysis_app
+                           docker ps
                        
                        """)
                 }
