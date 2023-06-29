@@ -35,6 +35,8 @@ pipeline {
                     echo "DEPLOY"
                     sh("""#!/bin/bash
                        echo "${env.WORKSPACE}"
+                       git config --global user.email "kaushalbaghel96@gmail.com"
+                       git config --global user.name "Kaushal-Baghel"
                        git config --list
                        git commit -m "Report Generated Successfully"
                        git push
