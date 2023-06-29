@@ -38,6 +38,7 @@ pipeline {
                        git config --global user.email "kaushalbaghel96@gmail.com"
                        git config --global user.name "Kaushal-Baghel"
                        git config --list
+                       git add .
                        git commit -m "Report Generated Successfully"
                        git push
                        """)    
