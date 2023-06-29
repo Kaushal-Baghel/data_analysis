@@ -40,7 +40,7 @@ pipeline {
                        git config --list
                        git add .
                        git commit -m "Report Generated Successfully"
-                       git push
+                       git push origin main
                        """)    
                 }    
             }
