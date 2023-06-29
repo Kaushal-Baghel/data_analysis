@@ -13,9 +13,10 @@ pipeline {
                            cd ..
                            ls -l
                            cp -R ./Data_Analysis_Script/ \${env}
-                           #wrkspc= \$(echo \${env}| rev| cut -d'/' -f2-| rev)
-                           #script_path=\$(echo \$(echo \${wrkspc})"/Data_Analysis_Script/")
-                           #echo \${wrkspc}
+                           cd /Data_Analysis_Script/
+                           sudo docker image build . -t data_analysis_app
+                           sudo docker run -d -it --name Testcontainer --volume $PWD:/usr/app/src data_analysis_app
+                           sudo docker ps
                        
                        """)
                 }
