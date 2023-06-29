@@ -11,6 +11,7 @@ pipeline {
                            env=\"${env.WORKSPACE}"
                            echo \${env}
                            cd ..
+                           ls -l
                            chmod +x -R .
                            cp -R ./Data_Analysis_Script/ \${env}
                            #wrkspc= \$(echo \${env}| rev| cut -d'/' -f2-| rev)
