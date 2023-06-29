@@ -15,10 +15,13 @@ pipeline {
                            #cp -R ./Data_Analysis_Script/ \${env}
                            cd Data_Analysis_Script/
                            docker image build . -t data_analysis_app
-                           docker run -d -t --name Testcontainer --volume $PWD:/usr/app/src --entrypoint /bin/bash data_analysis_app
+                           docker run -d -t --name Testcontainer --volume /var/lib/jenkins/workspace/Data_Analysis_Script:/usr/app/src --entrypoint /bin/bash data_analysis_app
                            docker exec -t Testcontainer ls
                            docker exec -t Testcontainer python gen_report.py
                            docker ps
+                           docker stop Testconatiner
+                           docker rm Testcontainer
+                           
                        
                        """)
                 }
@@ -34,7 +37,7 @@ pipeline {
     }
     post{
         always{
-        //    cleanWs()
+            cleanWs()
             echo "Exit"
         }
     }
