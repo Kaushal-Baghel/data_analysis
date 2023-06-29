@@ -19,9 +19,10 @@ pipeline {
                            docker exec -t Testcontainer ls
                            docker exec -t Testcontainer python gen_report.py
                            docker ps
-                           docker stop Testconatiner
+                           docker stop Testcontainer
                            docker rm Testcontainer
-                           
+                           docker rmi data_analysis_app
+                           cp -f /var/lib/jenkins/workspace/Data_Analysis_Script/index.html \${env}
                        
                        """)
                 }
@@ -37,7 +38,7 @@ pipeline {
     }
     post{
         always{
-            cleanWs()
+            //cleanWs()
             echo "Exit"
         }
     }
