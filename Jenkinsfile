@@ -35,6 +35,7 @@ pipeline {
                     echo "DEPLOY"
                     sh("""#!/bin/bash
                        echo "${env.WORKSPACE}"
+                       git config --list
                        git commit -m "Report Generated Successfully"
                        git push
                        """)    
@@ -45,7 +46,7 @@ pipeline {
     }
     post{
         always{
-            //cleanWs()
+            cleanWs()
             echo "Exit"
         }
     }
