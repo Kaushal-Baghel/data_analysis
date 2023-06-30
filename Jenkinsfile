@@ -35,15 +35,13 @@ pipeline {
                     echo "DEPLOY"
                     sh("""#!/bin/bash
                        echo "${env.WORKSPACE}"
-                       git config --global user.email "kaushalbaghel96@gmail.com"
-                       git config --global user.name "Kaushal-Baghel"
-                       git config --list
+                       #git config --global user.email "kaushalbaghel96@gmail.com"
+                       #git config --global user.name "Kaushal-Baghel"
+                       #git config --list
                        git checkout main
                        git add index.html
                        git commit -m "Report Generated Successfully"
-                       #git remote add origin https://{username}:{password}@github.com/{username}/project.git
                        git push https://${Git_Username}:${Git_Token}@github.com/Kaushal-Baghel/data_analysis.git
-                       #git push origin main
                        """)    
                 }
             }
